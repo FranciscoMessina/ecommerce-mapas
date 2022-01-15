@@ -1,0 +1,34 @@
+[
+	{
+		"id": 6,
+		"name": "Abrazzia",
+		"size": "10x33",
+		"price": "5300",
+		"desc": "Hermoso mapa de abrazzia 1960",
+		"img": "1623116535560.jpg"
+	},
+	{
+		"name": "America central",
+		"desc": "America central",
+		"size": "25 x60",
+		"price": "3500",
+		"img": "1623545221095.jpg",
+		"id": 7
+	},
+	{
+		"id": 8,
+		"name": "Alemania Belgica 9655",
+		"size": "25x60",
+		"price": "5600",
+		"desc": "Alemania belgica",
+		"img": "1623545242758.jpg"
+	},
+	{
+		"name": "Alabama 1922",
+		"desc": "Alabamaaa",
+		"size": "37x60",
+		"price": "6500",
+		"img": "1623545262487.jpg",
+		"id": 9
+	}
+]

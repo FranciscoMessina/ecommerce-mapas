@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('../partials/head.ejs') %>
+		<title>Compañia Argentina de Mapas</title>
+	</head>
+	<body class="profile">
+		<% if (!locals.logged) { %> <%- include('../partials/header.ejs', { title: 'ERROR'}) %> <% } else { %> <%-
+		include('../partials/header.ejs', { title: 'MI CUENTA' }) %> <% } %>
+		<main>
+			<aside class="panel">
+				<h4>MI CUENTA</h4>
+				<ul>
+					<li><a href="#">FAVORITOS</a></li>
+					<li><a href="#">COMPRAS</a></li>
+					<li><a href="/user/logout">DESCONECTATE</a></li>
+				</ul>
+			</aside>
+			<section class="account-disp">
+				<div class="account-info">
+					<h2>NOMBRE COMPLETO<span class="redtext">:</span></h2>
+					<p><%= locals.logged ? locals.logged.firstname + ' ' + locals.logged.lastname : 'Error' %></p>
+
+					<br />
+
+					<h2>EMAIL<span class="redtext">:</span></h2>
+					<p class="no-cap"><%= locals.logged ? locals.logged.email : 'error'%></p>
+				</div>
+			</section>
+		</main>
+		<!-- Footer -->
+		<%- include('../partials/footer.ejs')%>
+	</body>
+</html>

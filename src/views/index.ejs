@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('./partials/head.ejs') %>
+		<title>Compañia Argentina de Mapas</title>
+	</head>
+	<body>
+		<!-- Header - barra de navegacion - imagen principal -->
+		<header>
+			<nav>
+				<a href="/" class="logo-name">COMPAÑIA ARG MAPAS </a>
+				<div class="nav-links" id="navLinks">
+					<!-- Links de navegacion -->
+					<i class="fas fa-times" onclick="hideMenu()"></i>
+					<ul>
+						<% if (locals.logged) { %>
+						<li><a href="/" class="onpage">HOME</a></li>
+						<li><a href="/products/list">CATALOGO</a></li>
+						<li><a href="#about-us">SOBRE NOSOTROS</a></li>
+						<li><a href="/user/profile">MI CUENTA</a></li>
+						<li><a href="/products/cart">CONTACTO</a></li>
+						<% } else { %>
+						<li><a href="/" class="onpage">HOME</a></li>
+						<li><a href="/products/list">CATALOGO</a></li>
+						<li><a href="#about-us">SOBRE NOSOTROS</a></li>
+						<li><a href="/user/login">LOGIN</a></li>
+						<li><a href="/products/cart">CONTACTO</a></li>
+						<% } %>
+					</ul>
+				</div>
+				<!-- Icono para abrir menu en mobile -->
+				<i class="fas fa-bars" onclick="showMenu()"></i>
+			</nav>
+
+			<div class="text-box">
+				<h1>COMPAÑIA ARGENTINA DE MAPAS</h1>
+				<p>
+					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam fugiat ullam adipisci nesciunt, quo
+					consequatur vitae dolorum repellendus quaerat. <br />
+					Provident fugit facilis ullam autem aspernatur veniam saepe repellat rerum dolores? Lorem ipsum dolor sit amet
+					consectetur adipisicing elit.
+				</p>
+			</div>
+		</header>
+
+		<!-- Mapas Destacados -->
+		<main>
+			<div class="shadow">
+				<section class="mapas-destacados">
+					<h2>Mapas Destacados<i class="fas fa-sync-alt"></i></h2>
+					<p>No sabes que buscas? Mira estos mapas para inspirarte!</p>
+
+					<div class="row">
+						<% for(i = 0; i < 3; i++) { const random = Math.floor(Math.random() * products.length); %>
+
+						<div class="mapcol">
+							<a href="/products/detail/<%= products[random].id %>">
+								<img src="<%= products[random].img %>" alt="" />
+								<div class="prod-info">
+									<h3 class="weight400"><%= products[random].name %></h3>
+								</div>
+							</a>
+						</div>
+
+						<% } %>
+					</div>
+					<a href="/products/list" class="hero-btn"> MIRA TODOS NUESTROS MAPAS </a>
+				</section>
+			</div>
+
+			<!-- Conocenos mejor/ Informacion sobre nosotros -->
+
+			<section class="about-us" id="about-us">
+				<div class="abt-sub">
+					<h2>Conocenos mejor!</h2>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<%- include('./partials/footer.ejs')%>
+		<!-- Javascript para menu desplegable -->
+		<script>
+			var navLinks = document.getElementById('navLinks');
+			function showMenu() {
+				navLinks.style.right = 0;
+			}
+			function hideMenu() {
+				navLinks.style.right = '-200px';
+			}
+
+			document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+				anchor.addEventListener('click', function (e) {
+					e.preventDefault();
+
+					document.querySelector(this.getAttribute('href')).scrollIntoView({
+						behavior: 'smooth',
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

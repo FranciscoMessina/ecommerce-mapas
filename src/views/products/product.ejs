@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('../partials/head.ejs') %>
+		<title>Compañia Argentina de Mapas</title>
+	</head>
+	<body class="productpage">
+		<% if (product == null) { %> <%- include('../partials/header.ejs', { title: 'ERROR'}) %> <% } else { %> <%-
+		include('../partials/header.ejs', { title: product.name }) %> <% } %>
+		<main>
+			<section class="productdisplay">
+				<% if (product == null) {%>
+				<h4>UPS no encontramos el producto</h4>
+				<% } else { %>
+				<div class="prdcimages">
+					<div class="pdcimg">
+						<img src="<%= product.img %>" />
+					</div>
+					<div class="smallimgs-cont">
+						<div class="smallimg">
+							<img src="<%= product.img %>" width="100%" />
+						</div>
+						<div class="smallimg">
+							<img src="<%= product.img %>" width="100%" />
+						</div>
+						<div class="smallimg">
+							<img src="<%= product.img %>" width="100%" />
+						</div>
+						<div class="smallimg">
+							<!-- <img src="<%= product.img %>" width="100%" /> -->
+						</div>
+					</div>
+				</div>
+
+				<div class="pdcdescription">
+					<div class="prdt-info">
+						<h2><%= product.name %></h2>
+						<p>
+							<%= product.desc %> <br />
+							<br />
+							Tamaño: <%= product.size %>
+						</p>
+					</div>
+					<div class="pdcdescription-low">
+						<h4><span class="redtext"> $</span><%= product.price %></h4>
+						<div class="prdt-cta">
+							<select class="frame">
+								<option>Elegir marco</option>
+								<option>Blanco</option>
+								<option>Roble</option>
+								<option>Paraiso</option>
+							</select>
+							<button type="submit" class="button">COMPRAR</button>
+						</div>
+					</div>
+				</div>
+				<% } %>
+			</section>
+		</main>
+		<!-- Footer -->
+		<%- include('../partials/footer.ejs')%>
+	</body>
+</html>

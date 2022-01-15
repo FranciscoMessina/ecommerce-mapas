@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('../partials/head.ejs') %>
+		<title>Compañia Argentina de Mapas</title>
+	</head>
+	<body class="newproduct">
+		<!-- Header -->
+		<%- include('../partials/header.ejs', { title:'EDITAR PRODUCTO' })%>
+		<!-- Main body -->
+		<main>
+			<div class="formbox">
+				<form
+					action="/products/<%= product.id %>?_method=PUT"
+					method="POST"
+					class="create-form"
+					autocomplete="off"
+					enctype="multipart/form-data"
+				>
+					<div class="form-field input-icons">
+						<label for="name">Nombre del producto:</label>
+						<input type="text" name="name" id="name" class="field" value="<%= product.name %>" />
+						<i class="fas fa-map icon"></i>
+					</div>
+
+					<div class="form-field input-icons">
+						<label for="size">Tamaño:</label>
+						<input
+							type="text"
+							name="size"
+							id="size"
+							placeholder="Ej. 25x60"
+							class="field"
+							value="<%= product.size %>"
+						/>
+						<i class="fas fa-pencil-ruler icon"></i>
+					</div>
+
+					<div class="form-field input-icons">
+						<label for="price">Precio:</label>
+						<input
+							type="number"
+							name="price"
+							id="price"
+							placeholder="Precio"
+							class="field"
+							value="<%= product.price %>"
+						/>
+						<i class="fas fa-coins icon"></i>
+					</div>
+
+					<div class="form-field">
+						<label for="desc">Descripción:</label>
+						<textarea name="desc" id="desc" cols="30" rows="10" class="field">
+<%= product.desc %>
+						</textarea
+						>
+					</div>
+
+					<div class="form-field input-icons">
+						<label for="img">Imagen:</label>
+						<input type="file" name="img" class="field custom-file-input" />
+						<i class="fas fa-image icon"></i>
+					</div>
+
+					<button type="submit" class="button">Editar producto</button>
+				</form>
+
+				<div class="link">
+					<a href="/products/controlpanel">Cancelar</a>
+				</div>
+			</div>
+		</main>
+
+		<!-- Footer -->
+		<%- include('../partials/footer.ejs')%>
+	</body>
+</html>

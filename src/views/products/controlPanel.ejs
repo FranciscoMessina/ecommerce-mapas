@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('../partials/head.ejs') %>
+		<title>Compañia Argentina de Mapas</title>
+	</head>
+	<body class="controlpanel">
+		<!-- Header -->
+		<%- include('../partials/header.ejs', { title:'PANEL DE CONTROL' })%>
+		<!-- Main body -->
+		<main>
+			<div class="control-list">
+				<a href="/products/create" class="newprod-btn">AGREGAR PRODUCTO</a>
+				<table>
+					<tr>
+						<th>ID</th>
+						<th>NOMBRE</th>
+						<th>SIZE</th>
+						<th>PRECIO</th>
+					</tr>
+					<% products.forEach((product) => { %>
+					<tr>
+						<td><%= product.id %></td>
+						<td><%= product.name %></td>
+						<td><%= product.size %></td>
+						<td>$<%= product.price %></td>
+						<td>
+							<a href="/products/<%= product.id %>/edit "> EDITAR </a>
+						</td>
+						<td>
+							<a class="open-modal-btn">ELIMINAR</a>
+						</td>
+						<div class="modal">
+							<div id="modal-content" class="modal-content">
+								<span class="close">&times;</span>
+								<p>Estas por eliminar <%= product.name %> ( ID: <%= product.id %> ) , estas seguro?</p>
+								<form action="/products/<%= product.id %>?_method=DELETE" method="POST">
+									<button type="submit" class="delete">ELIMINAR</button>
+								</form>
+							</div>
+						</div>
+					</tr>
+
+					<% }) %>
+				</table>
+			</div>
+		</main>
+
+		<script>
+			// Get the modal
+			var modal = document.querySelectorAll('.modal');
+
+			var modalCont = document.querySelectorAll('.modal-content');
+
+			// Get the button that opens the modal
+			var btn = document.querySelectorAll('.open-modal-btn');
+
+			// Get the <span> element that closes the modal
+			var span = document.querySelectorAll('.span');
+
+			btn.forEach(function (a, b) {
+				a.onclick = function () {
+					modal[b].style.display = 'block';
+				};
+			});
+
+			span.forEach(function (a, b) {
+				a.onclick = function () {
+					modal[b].style.display = 'none';
+				};
+			});
+
+			modal.forEach((a, b) => {
+				a.onclick = (e) => {
+					if (e.target != modalCont[b]) {
+						modal[b].style.display = 'none';
+					}
+				};
+			});
+		</script>
+
+		<!-- Footer -->
+		<%- include('../partials/footer.ejs')%>
+	</body>
+</html>

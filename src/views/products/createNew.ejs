@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('../partials/head.ejs') %>
+		<title>Compañia Argentina de Mapas</title>
+	</head>
+	<body class="newproduct">
+		<!-- Header -->
+		<%- include('../partials/header.ejs', { title:'NUEVO PRODUCTO' })%>
+		<!-- Main body -->
+		<main>
+			<div class="formbox">
+				<form
+					action="/products/create"
+					method="POST"
+					class="create-form"
+					autocomplete="off"
+					enctype="multipart/form-data"
+				>
+					<div class="form-field input-icons">
+						<label for="name">Nombre del producto:</label>
+						<input type="text" name="name" id="name" class=" field <%= locals.errors && errors.name ? 'input-error' : ''
+						%> " value='<%= locals.old && old.name ? old.name : '' %>' />
+						<i class="fas fa-map icon <%= locals.errors && errors.name ? 'fix-top' : '' %>"></i>
+						<% if (locals.errors && errors.name) { %>
+						<p class="redtext"><%= errors.name.msg %></p>
+						<i class="fas fa-exclamation icon warning"></i>
+						<% } %>
+					</div>
+
+					<div class="form-field input-icons">
+						<label for="size">Tamaño:</label>
+						<input type="text" name="size" id="size" placeholder="Ej. 25x60" class=" field <%= locals.errors &&
+						errors.size ? 'input-error' : '' %> " value='<%= locals.old && old.size ? old.size : '' %>' />
+						<i class="fas fa-pencil-ruler icon <%= locals.errors && errors.size ? 'fix-top' : '' %>"></i>
+						<% if (locals.errors && errors.size) { %>
+						<p class="redtext"><%= errors.size.msg %></p>
+						<i class="fas fa-exclamation icon warning"></i>
+						<% } %>
+					</div>
+
+					<div class="form-field input-icons">
+						<label for="price">Precio:</label>
+						<input type="number" name="price" id="price" class=" field <%= locals.errors && errors.price ? 'input-error'
+						: '' %> " value='<%= locals.old && old.price ? old.price : '' %>' />
+						<i class="fas fa-coins icon <%= locals.errors && errors.price ? 'fix-top' : '' %>"></i>
+						<% if (locals.errors && errors.price) { %>
+						<p class="redtext"><%= errors.price.msg %></p>
+						<i class="fas fa-exclamation icon warning"></i>
+						<% } %>
+					</div>
+
+					<div class="form-field">
+						<label for="desc">Descripción:</label>
+						<textarea
+							name="desc"
+							id="desc"
+							cols="30"
+							rows="10"
+							class="field <%= locals.errors && errors.desc ? 'input-error' : '' %>"
+						>
+<%= locals.old && old.desc ? old.desc : '' %></textarea
+						>
+						<% if (locals.errors && errors.desc) { %>
+						<p class="redtext"><%= errors.desc.msg %></p>
+						<% } %>
+					</div>
+
+					<div class="form-field input-icons">
+						<label for="img">Imagen:</label>
+						<input
+							type="file"
+							name="img"
+							id="img"
+							class="field <%= locals.errors && errors.img ? 'input-error' : '' %>"
+						/>
+						<i class="fas fa-image icon <%= locals.errors && errors.img ? 'fix-top' : '' %>"></i>
+						<% if (locals.errors && errors.img) { %>
+						<p class="redtext"><%= errors.img.msg %></p>
+						<i class="fas fa-exclamation icon warning"></i>
+						<% } %>
+					</div>
+
+					<button type="submit" class="button">Crear producto</button>
+				</form>
+
+				<div class="link">
+					<a href="/products/controlpanel">Cancelar</a>
+				</div>
+			</div>
+		</main>
+
+		<!-- Footer -->
+		<%- include('../partials/footer.ejs')%>
+	</body>
+</html>

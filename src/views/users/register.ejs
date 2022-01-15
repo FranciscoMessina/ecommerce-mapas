@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('../partials/head.ejs') %>
+		<title>Compañia Argentina de Mapas</title>
+	</head>
+	<body class="registerpage">
+		<%- include('../partials/header.ejs', { title:'REGISTRATE' })%>
+		<main>
+			<div class="formbox">
+				<form action="/user/register" method="POST" autocomplete="off">
+					<div class="form-field input-icons">
+						<label for="firstname">Nombre:</label>
+						<input type="text" name="firstname" id="firstname" class="field <%= locals.errors && errors.firstname ?
+						'input-error' : '' %>" value='<%= locals.old && old.firstname ? old.firstname : '' %>' />
+						<i class="fas fa-user icon <%= locals.errors && errors.firstname ? 'fix-top' : '' %>"></i>
+						<% if (locals.errors && errors.firstname) { %>
+						<p class="redtext"><%= errors.firstname.msg %></p>
+						<i class="fas fa-exclamation icon warning"></i>
+						<% } %>
+					</div>
+					<div class="form-field input-icons">
+						<label for="lastname">Apellido:</label>
+						<input type="text" name="lastname" id="lastname" class="field <%= locals.errors && errors.lastname ?
+						'input-error' : '' %>" value='<%= locals.old && old.lastname ? old.lastname : '' %>' />
+						<i class="fas fa-id-card icon <%= locals.errors && errors.lastname ? 'fix-top' : '' %>"></i>
+						<% if (locals.errors && errors.lastname) { %>
+						<p class="redtext"><%= errors.lastname.msg %></p>
+						<i class="fas fa-exclamation icon warning"></i>
+						<% } %>
+					</div>
+
+					<div class="form-field input-icons">
+						<label for="email">Email:</label>
+						<input type="text" name="email" id="email" class="field <%= locals.errors && errors.email ? 'input-error' :
+						'' %>" value='<%= locals.old && old.email ? old.email : '' %>' />
+						<i class="fas fa-envelope icon <%= locals.errors && errors.email ? 'fix-top' : '' %>"></i>
+						<% if (locals.errors && errors.email) { %>
+						<p class="redtext"><%= errors.email.msg %></p>
+						<i class="fas fa-exclamation icon warning"></i>
+						<% } %>
+					</div>
+
+					<div class="form-field input-icons">
+						<label for="password">Contraseña:</label>
+						<input type="password" name="password" id="password" class="field <%= locals.errors && errors.password ?
+						'input-error' : '' %>" value='<%= locals.old && old.password ? old.password : '' %>' />
+						<i class="fas fa-lock icon <%= locals.errors && errors.password ? 'fix-top' : '' %>"></i>
+						<% if (locals.errors && errors.password) { %>
+						<p class="redtext"><%= errors.password.msg %></p>
+						<i class="fas fa-exclamation icon warning"></i>
+						<% } %>
+					</div>
+					<div class="form-field input-icons">
+						<label for="passwordConfirmation">Confirmar contraseña:</label>
+						<input type="password" name="passwordConfirmation" id="passwordConfirmation" class="field <%= locals.errors
+						&& errors.passwordConfirmation ? 'input-error' : '' %>" value='<%= locals.old && old.passwordConfirmation ?
+						old.passwordConfirmation : '' %>' />
+						<i class="fas fa-lock icon <%= locals.errors && errors.passwordConfirmation ? 'fix-top' : '' %>"></i>
+						<% if (locals.errors && errors.passwordConfirmation) { %>
+						<p class="redtext"><%= errors.passwordConfirmation.msg %></p>
+						<i class="fas fa-exclamation icon warning"></i>
+						<% } %>
+					</div>
+
+					<button type="submit" class="button">Crear cuenta</button>
+				</form>
+
+				<div class="link">
+					<p>Ya tenes cuenta?<a href="/user/login"> Conectate</a></p>
+					<a href="/">Volver al inicio</a>
+				</div>
+			</div>
+		</main>
+		<!-- Footer -->
+		<%- include('../partials/footer.ejs')%>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<header>
+	<nav>
+		<a href="/" class="logo-name">COMPAÑIA ARG MAPAS </a>
+		<div class="nav-links" id="navLinks">
+			<!-- Links de navegacion -->
+			<i class="fas fa-times" onclick="hideMenu()"></i>
+			<ul>
+				<% if (locals.logged) { %>
+				<li><a href="/">HOME</a></li>
+				<li><a href="/products/list">CATALOGO</a></li>
+				<li><a href="/#about-us">SOBRE NOSOTROS</a></li>
+				<li><a href="/user/profile">MI CUENTA</a></li>
+				<li><a href="/products/cart">CONTACTO</a></li>
+				<% } else { %>
+				<li><a href="/">HOME</a></li>
+				<li><a href="/products/list">CATALOGO</a></li>
+				<li><a href="/#about-us">SOBRE NOSOTROS</a></li>
+				<li><a href="/user/login">LOGIN</a></li>
+				<li><a href="/products/cart">CONTACTO</a></li>
+				<% } %>
+			</ul>
+		</div>
+		<!-- Icono para abrir menu en mobile -->
+		<i class="fas fa-bars" onclick="showMenu()"></i>
+	</nav>
+
+	<div class="text-box">
+		<h1><%= title %></h1>
+	</div>
+</header>
+
+<!-- Javascript para menu desplegable -->
+<script>
+	var navLinks = document.getElementById('navLinks');
+	function showMenu() {
+		navLinks.style.right = 0;
+	}
+	function hideMenu() {
+		navLinks.style.right = '-200px';
+	}
+</script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('../partials/head.ejs') %>
+		<title>Compañia Argentina de Mapas</title>
+	</head>
+	<body class="productlist">
+		<!-- Header -->
+		<%- include('../partials/header.ejs', { title:'CATALOGO' })%>
+		<!-- Main body -->
+		<main>
+			<div class="controls">
+				<a href="/products/controlpanel">PANEL DE CONTROL</a>
+			</div>
+			<div class="main-cont">
+				<% products.forEach((product) => { %>
+				<div class="indv-cont">
+					<a href="/products/detail/<%= product.id %> " class="prod-link">
+						<img src="<%= product.img %>" alt="" />
+
+						<div class="prod-info">
+							<h4><%= product.name %></h4>
+						</div>
+					</a>
+				</div>
+				<% }) %>
+			</div>
+		</main>
+
+		<!-- Footer -->
+		<%- include('../partials/footer.ejs')%>
+	</body>
+</html>
